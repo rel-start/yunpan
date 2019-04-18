@@ -1,0 +1,6 @@
+$border_color: #d0d9de;
+$subject_bg: #ecf0f6;
+$subject_color: #55addc;
+
+@mixin site_icon ($x: null, $y: null, $color: null) { background: $color url(../img/site_icon.png) no-repeat $x $y; }
+@mixin contextmenu { display: none; position: absolute; border-radius: 4px / 2px 8px 10px 6px; box-shadow: 0 4px 12px rgba(0,0,0,.175); border: 1px solid rgba(0,0,0,.15); background-color: #fff; color: #333;  padding: 5px 0; width: 158px; }

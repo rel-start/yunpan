@@ -1,0 +1,198 @@
+.mMoveto {
+  position: fixed; top: 0; left: 0; z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: table-cell;
+  font: 14px 'Microsoft YaHei',SimSun;
+}
+
+.mMoveto_overlay {
+  position: absolute; top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.4);
+}
+
+.mMoveto_content {
+  position: absolute;
+  height: 320px;
+  margin: auto;
+  box-shadow: 0 0 3px rgba(0,0,0,.25);
+  border-radius: 5px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.mMoveto_header {
+  height: 44px;
+  line-height: 44px;
+  padding-left: 15px;
+  padding-right: 12px;
+  border: 1px solid #c4dbfe;
+  background-color: #f7faff;
+  cursor: move;
+}
+
+.mMoveto_close {
+  float: right;
+  font-size: 21px;
+  color: #999;
+  line-height: 40px;
+  cursor: pointer;
+}
+
+.mMoveto_close:hover {
+  color: #637497;
+}
+
+
+.treeBox {
+  width: 498px;
+  height: 200px;
+  margin: 10px;
+  border: 1px solid #f2f2f2;
+  cursor: default;
+  user-select: none;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+.treeBox::-webkit-scrollbar {  
+  width: 10px;  
+  height: 10px;  
+  background-color: #F5F5F5;  
+}  
+/*定义滚动条轨道 内阴影+圆角*/  
+.treeBox::-webkit-scrollbar-track {  
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);  
+  background: #fff ;  
+}  
+/*定义滑块 内阴影+圆角*/  
+.treeBox::-webkit-scrollbar-thumb {  
+  border-radius: 3px;  
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);  
+  background-color:rgba(160, 160, 160, 0.5);  
+}  
+.treeBox::-webkit-scrollbar-thumb:hover {  
+  border-radius: 3px;  
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);  
+  background-color:rgba(160, 160, 160, 0.7);  
+}  
+
+.treeview ul { display: none; }
+
+.treeview h4 {
+  font-size: 0;
+  padding: 4px 0;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  height: 24px;
+  line-height: 24px;
+}
+
+.treeview h4:hover {
+  border-color: rgba(187, 212, 239, .3);
+  background-color: rgba(229, 240, 251, .3);
+}
+
+.treeview h4.active {
+  border-color: rgb(187, 212, 239);
+  background-color: rgba(229, 240, 251, .8);
+}
+.treeview h4 * { display: inline-block; vertical-align: top; }
+
+.treeview .text {
+  font-weight: normal;
+  font-size: 12px;
+  color: #333;
+}
+
+.treeview span {
+  width: 12px;
+  height: 12px;
+  margin: 6px 8px 0 3px;
+}
+.treeview span.add { background: url(../img/icon-tree.png) no-repeat -30px -1px; }
+.treeview .open .add { background-position: -30px -24px; }
+
+.treeview em {
+  width: 20px;
+  height: 15px;
+  margin: 5px 5px 0 0;
+  background: url(../img/icon-tree.png) no-repeat -2px -2px;
+}
+.treeview .open em { background-position: -2px -24px; }
+
+.treeview .name_input {
+  height: 20px;
+  line-height: 20px;
+  border: 1px solid #ddd;
+  margin-top: 1px;
+  width: 110px;
+  padding: 0 5px;
+  font-size: 12px;
+}
+
+.treeview .sureBtn {
+  cursor: pointer;
+  width: 26px;
+  height: 24px;
+  margin: 0 5px;
+  background: url(../img/sure.png) no-repeat;
+}
+
+.treeview .cancelBtn {
+  cursor: pointer;
+  width: 26px;
+  height: 24px;
+  background: url(../img/cancel.png) no-repeat;
+}
+
+.mMoveto_footer {
+  padding: 5px 10px;
+}
+.mMoveto_footer button {
+  float: right;
+  width: 130px;
+  height: 32px;
+  text-align: center;
+  color: #3b8cff;
+  line-height: 32px;
+  border: 1px solid #c0d9fe;
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.mMoveto_footer button:hover {
+  opacity: .8;
+}
+
+.mMoveto_footer .mMoveto_newFile {
+  float: left;
+  width: auto;
+  padding: 0 10px;
+}
+
+.mMoveto_footer .mMoveto_newFile::before {
+  display: inline-block; vertical-align: top;
+  width: 18px;
+  height: 16px;
+  margin: 7px 3px 0 1px;
+  background: url(../img/icon-newfile.png) no-repeat;
+  content: '';
+}
+
+.mMoveto_footer .mMoveto_sure {
+  margin-right: 10px;
+  border-color: #3b8cff;
+  background-color: #3b8cff;
+  color: #fff;
+}
+
+.moveto_dialog .mMoveto_content {
+  transform: translateY(-50px);
+  opacity: 0;
+}
+
+
+.mMoveto_footer button[disabled] { cursor: url(../img/disabled.cur), default; }

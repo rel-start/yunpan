@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>云盘</title>
+	<link rel="stylesheet" type="text/css" href="css/common.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.min.css">
+	<link rel="stylesheet" type="text/css" href="css/mMoveto.css">
+</head>
+
+<body>
+	<!-- @L 头部 -->
+	<header class="header">
+		<!-- @M .logo -->
+		<h1 class="logo fl">
+			<a href="index.html"></a>
+		</h1>
+
+		<!-- @M 信息夹 -->
+		<div class="info_folder fr">
+			<!-- @S 用户操作 -->
+			<div class="user_operation clearfix">
+				<!-- =s .uop_head -->
+				<div class="uop_head">
+					<a class="avatar" href="javascript:;">
+						<img width="100%" src="img/default_profile_normal.png">
+					</a>
+					<span class="caret"></span>
+				</div>
+
+				<!-- =s .uop_info -->
+				<dl class="uop_info">
+					<dt>放假啊看來</dt>
+					<dd class="divider"></dd>
+					<dd class="item">个人资料</dd>
+					<dd class="divider"></dd>
+					<dd class="item">设置和隐私</dd>
+					<dd class="item">帮助中心</dd>
+					<dd class="item">登出</dd>
+				</dl>
+			</div>
+
+			<!-- @S 用户设置 -->
+			<div class="user_set">
+
+			</div>
+		</div>
+	</header>
+	<!-- /L 头部 -->
+
+	<!-- @L 工具条 -->
+	<menu class="toolbar">
+
+		<!-- @M 文件夹操作控件 -->
+		<div class="folders_control" id="foldersControl">
+			<button>
+				<i class="caret"></i>下载</button>
+			<button>
+				<i class="caret"></i>分享</button>
+			<button id="fileMoveTo">
+				<i class="caret"></i>移动到</button>
+			<button id="reName">
+				<i class="caret"></i>重命名</button>
+			<button id="rmFile">
+				<i class="caret"></i>删除</button>
+			<button id="newFolder">
+				<i class="caret"></i>新建文件夹</button>
+			<button id="refresh" data-file-aa='22' title="刷新">
+				<i class="caret"></i>
+				<!--刷新-->
+			</button>
+		</div>
+
+		<!-- @M 工具条右侧 -->
+		<div class="toolbar_right">
+			<!-- @S 侧边栏 -->
+			<button class="class_view" title="侧边栏" id="classView"></button>
+			<!-- @S 排序控件 -->
+			<dfn class="order_control">
+				<i class="mask"></i>
+				<a class="order_btn" href="javascript:;">
+					<span class="caret"></span>
+				</a>
+				<dfn class="list" id="orderList">
+					<span class="time_order">按时间排序</span>
+					<span class="alpha_order">按名称排序</span>
+					<span class="display_mode">详细信息</span>
+				</dfn>
+			</dfn>
+		</div>
+	</menu>
+	<!-- /L 工具条 -->
+
+	<!-- @L 主体 -->
+	<section class="container clearfix" id="container">
+		<!-- @M 菜单树 -->
+		<div class="menu_tree fl" onselectstart="return false;" id="menuTree">
+			<div class="e_resize" id="e_resize"></div>
+		</div>
+
+		<!-- @M 桌面 -->
+		<div class="desktop">
+			<!-- @S 路径 -->
+			<header class="desktop_path">
+				<span class="all_check" id="allCheck"></span>
+				<!-- checked -->
+				<dfn class="path_choice" id="pathWrap">
+					<a class="active" href="javascript:;">微云</a>
+					<a href="javascript:;">JS课程</a>
+					<a href="javascript:;">CSS课程</a>
+				</dfn>
+			</header>
+
+			<!-- @S 文件区域。 -->
+			<div class="file_area" id="fileArea">
+					<div class="mouse_frame" id="mouse_frame"></div>
+				<div class="nofile">
+					<span></span>
+					<em>暂无文件</em>
+					<i>请点击左上角的“
+						<a href="javascript:;">上传</a>”按钮添加</i>
+				</div>
+
+				<div class="contextmenu" id="contextmenu">
+					<!-- <ul>
+						<li><h5 class="contextmenu_upload">上传</h5></li>
+						<li><h5 class="contextmenu_newFolder">新建文件夹</h5></li>
+						<li class="line"></li>
+						<li><h5 class="contextmenu_refresh">刷新</h5></li>
+						<li>
+							<h5 class="contextmenu_toggle" data-class="1">查看</h5>
+							<ul>
+								<li><h5 class="contextmenu_mode">缩略图</h5></li>
+								<li><h5 class="contextmenu_mode">详细信息</h5></li>
+							</ul>
+						</li>
+						<li>
+							<h5 class="contextmenu_toggle" data-class="1">排序方式</h5>
+							<ul>
+								<li><h5 class="contextmenu_nameSort">按名称排序</h5></li>
+								<li><h5 class="contextmenu_timeSort">按时间排序</h5></li>
+							</ul>
+						</li>
+					</ul> -->
+				</div>
+
+				<div class="bar_wrap">
+					<div class="bar"></div>
+				</div>
+
+				<!-- 列表形式： tabular_form
+						 缩略图： file_wrap -->
+				<ul class="file_wrap" id="fileWrap">
+					<!-- active:  普通选中、重命名
+							 checked: 复选框选中
+					<li class="file checked">
+						<label class="checkbox checked"></label>
+						<span class="file_img"></span>
+						<dfn class="file_title">
+							<em class="fill_name" style="display: none;" title="JS基础课程">JS基础课程</em>
+							<input type="text" class="relname" style="display: inline-block;" value="JS基础课程">
+						</dfn>
+						<menu class="file_control">
+							<a class="curDownload" href="javascript:;"></a>
+							<a class="curShare" href="javascript:;"></a>
+							<a class="curMoveto" href="javascript:;"></a>
+							<a class="curRename" href="javascript:;"></a>
+							<a class="curRemove" href="javascript:;"></a>
+						</menu>
+						<time class="file_time">2016-08-22 16:03</time>
+					</li> -->
+				</ul>
+			</div>
+		</div>
+	</section>
+	<!-- /L 主体 -->
+
+	<!-- 状态提示
+			超时： overtimer
+			成功： success
+			请选择： select_file
+	-->
+	<div class="status_hints" data-style="success">
+		<i class="caret"></i>
+		<span class="status_text">删除文件成功</span>
+	</div>
+
+	<!-- 弹窗：删除文件 -->
+	<div class="dialog rmAlert" id="rmAlert"> </div>
+
+	<!-- 弹窗：选择存储位置 
+	<div class="dialog selPosition" onselectstart="return false;">
+		<div class="dialog_overlay"></div>
+		<div class="dialog_content">
+			<div class="dialog_close" data-dialog-close>&times;</div>
+
+			<div class="dialog_header">
+				<h3>选择存储位置</h3>
+				<div class="sel_name">JS基础课程</div>
+			</div>
+
+			<div class="dialog_body" id="selPosBody">
+				<div class="bar_wrap">
+					<div class="bar"></div>
+				</div>
+			</div>
+
+			<div class="dialog_footer">
+				<a class="sure_btn" href="javascript:;" data-dialog-sure>确定</a>
+				<a class="cancel_btn" href="javascript:;" data-dialog-cancel>取消</a>
+			</div>
+		</div>
+	</div>-->
+
+	<!-- <div class="mMoveto">
+		<div class="mMoveto_overlay"></div>
+		<div class="mMoveto_content">
+			<div class="mMoveto_header">移动到
+				<span class="mMoveto_close">&times;</span>
+			</div>
+
+			<div class="mMoveto_body">
+				<div class="treeBox">
+					<ul class="treeview" id="treeview">
+						<li>
+							<h4 class="active open"><span class="add"></span><em></em><dfn class="input_wrap"><input class="name_input" type="text"><i class="sure"></i><i class="cancel"></i></dfn></h4>
+							<ul>
+								<li><h4 class="open" style="padding-left: 15px;"><span class="add"></span><em></em><i class="text">音乐</i></h4>
+									<ul>
+										<li><h4 style="padding-left: 30px;"><span class="add"></span><em></em><i class="text">音乐1</i></h4></li>
+										<li><h4 style="padding-left: 30px;"><span></span><em></em><i class="text">音乐2</i></h4></li>
+									</ul>
+								</li>
+								<li><h4 class="open" style="padding-left: 15px;"><span class="add"></span><em></em><i class="text">电影</i></h4>
+									<ul>
+										<li><h4 style="padding-left: 30px;"><span class="add"></span><em></em><i class="text">电影1</i></h4></li>
+										<li><h4 style="padding-left: 30px;"><span class="add"></span><em></em><i class="text">电影2</i></h4></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="mMoveto_footer">
+					<a class="mMoveto_newFile" href="javascript:;">新建文件夹</a>
+					<a class="mMoveto_cancel" href="javascript:;">取消</a>
+					<a class="mMoveto_sure" href="javascript:;">确定</a>
+				</div>
+		</div>
+	</div> -->
+
+	<!-- 正在删除
+	<div class="deleting">
+		<div class="loading">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		正在删除 0/15
+	</div> -->
+	<div class="drag_hint" id="drag_hint">选中1个文件</div>
+	
+
+
+
+	<script src="db/db.js"></script>
+	<script src="js/tools.js"></script>
+	<script src="js/createLayout.js"></script>
+	<script src="js/main.js"></script>
+</body>
+
+</html>
